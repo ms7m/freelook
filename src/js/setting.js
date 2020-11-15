@@ -36,4 +36,14 @@ loadSettings = () => {
             ipcRenderer.send("setConfig",'homepageUrl', value);
         }
     });
+
+    // load notification setting
+    const notificationTimeout = settings.get('notificationTimeout','default');
+    const $notificationTimeout = $('#notificationTimeout');
+    $notificationTimeout.dropdown('set selected', notificationTimeout);
+    $notificationTimeout.dropdown({
+        onChange: (value) => {
+            settings.set('notificationTimeout', value);
+        }
+    });
 };
